@@ -187,6 +187,7 @@ async def showMonth(message: Message, state: FSMContext):
         months = await db.getMonthYear()
     
         for month in months:
+            print(month[0])
             if str(month[0]) == str(1):
                 months_list.append("Yanvar")
             elif str(month[0]) == str(2):
