@@ -169,14 +169,17 @@ async def send_to_admins(num_admins):
     time_format = '%Y-%m-%d'
     formatted_now = datetime.now(timezone('Asia/Tashkent')).strftime(time_format)
     managers = await db.show_on()
-    for i in managers:
-        a.append(i[1])
+    admins = [i[1] for i in managers]  # create a list of admin usernames
+    admin_index = 0  # start with the first admin in the list
+
     while data_queue:
         data = data_queue.popleft()
 
-        admin = a[len(data) % num_admins]
+        admin = admins[admin_index]  # select the current admin
         await bot.send_message(admin, data)
         await db.add_counter(admin, 1, formatted_now)
+
+        admin_index = (admin_index + 1) % num_admins
 
 
 async def collect_data(data: str, num_admins):
