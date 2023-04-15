@@ -274,9 +274,8 @@ async def getContact(message: Message, state: FSMContext):
     lang = await db.getUser_lang(message.from_user.id)
     managers_list = list()
     number = message.text
-    length = len(number)
     if lang == 'uz':
-        if length == 9:
+        if number.isdigit():
             await db.update_user_phone(message.from_user.id, number)
             await db.update_user_status(message.from_user.id, 1)
             managers = await db.show_on()
@@ -293,7 +292,7 @@ async def getContact(message: Message, state: FSMContext):
             await message.answer("Qayta kiriting!\n\nMisol: 901234567")
             return
     elif lang == 'ru':
-        if length == 9:
+        if number.isdigit():
             await db.update_user_phone(message.from_user.id, number)
             await db.update_user_status(message.from_user.id, 1)
             managers = await db.show_on()
