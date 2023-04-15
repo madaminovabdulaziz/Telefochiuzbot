@@ -216,12 +216,15 @@ async def getProduct(message: Message, state: FSMContext):
             admins_list.append(i[1])
         leng = len(admins_list)
         info = lid(name, phoned, age, work_status, product, message.from_user.id)
-        await collect_data(info, leng)
+        
         if lang == 'uz':
+            await collect_data(info, leng)
             await message.answer(send_success())
             await message.answer("🏡 Bosh menyu", reply_markup=main_menu())
             await Main.main_menu.set()
+            
         elif lang == 'ru':
+            await collect_data(info, leng)
             await message.answer(send_success_rus())
             await message.answer("🏡 Главное меню", reply_markup=main_menu_rus())
             await Main.main_menu.set()
@@ -249,12 +252,13 @@ async def getContact(message: Message, state: FSMContext):
         managers_list.append(i[1])
     leng = len(managers_list)
     info = lid(name, number, age, work_status, product, message.from_user.id)
-    await collect_data(info, leng)
     if lang == 'uz':
+        await collect_data(info, leng)
         await message.answer(send_success())
         await message.answer("🏡 Bosh menyu", reply_markup=main_menu())
         await Main.main_menu.set()
     elif lang == 'ru':
+        await collect_data(info, leng)
         await message.answer(send_success_rus())
         await message.answer("🏡 Главное меню", reply_markup=main_menu_rus())
         await Main.main_menu.set()
