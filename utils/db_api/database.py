@@ -278,14 +278,14 @@ class Database:
         SELECT SUM(counter) as total_counter
         FROM Counter
         WHERE telegram_id = '{telegram_id}'
-        AND extract(month from datetime::date) = '{month}'
-        AND extract(year from datetime::date) = '{year}'
+        AND extract(month from datetime::date) = CAST('{month}' AS INTEGER)
+        AND extract(year from datetime::date) = CAST('{year}' AS INTEGER)
         """
         return await self.execute(sql, fetchval=True)
 
     async def getMonthYear(self):
         sql = """
-        SELECT DISTINCT EXTRACT(MONTH FROM datetime::date) as month, EXTRACT(YEAR FROM datetime::date) as year
+        SELECT DISTINCT EXTRACT(MONTH FROM datetime::date) AS month, CAST(EXTRACT(YEAR FROM datetime::date) AS INTEGER) AS year
         FROM Counter
         ORDER BY year, month
         """
