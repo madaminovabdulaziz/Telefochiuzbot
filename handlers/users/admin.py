@@ -161,7 +161,6 @@ async def showYear(message: Message, state: FSMContext):
     year_markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     year_list = list()
     years_months = await db.getMonthYear()
-    print(years_months)
     for i in years_months:
         year_list.append(str(i[1]))
 
@@ -186,9 +185,7 @@ async def showMonth(message: Message, state: FSMContext):
         months_list = list()
         month_markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
         months = await db.getMonthYear()
-        print(f"Umumiy >> {months}")
-        print(f"Yil >>> {months[1]}")
-        print(f"Oy >>> {months[0]}")
+    
         for month in months:
             if str(month[0]) == str(1):
                 months_list.append("Yanvar")
