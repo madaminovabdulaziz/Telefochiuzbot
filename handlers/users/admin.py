@@ -187,29 +187,30 @@ async def showMonth(message: Message, state: FSMContext):
         months = await db.getMonthYear()
     
         for month in months:
-            if str(months[0][0]) == str(1):
+            print(str(months[0]))
+            if str(months[0]) == str(1):
                 months_list.append("Yanvar")
-            elif str(months[0][0]) == str(2):
+            elif str(months[0]) == str(2):
                 months_list.append("Fevral")
-            elif str(months[0][0]) == str(3):
+            elif str(months[0]) == str(3):
                 months_list.append("Mart")
-            elif str(months[0][0]) == str(4):
+            elif str(months[0]) == str(4):
                 months_list.append("Aprel")
-            elif str(months[0][0]) == str(5):
+            elif str(months[0]) == str(5):
                 months_list.append("May")
-            elif str(months[0][0]) == str(6):
+            elif str(months[0]) == str(6):
                 months_list.append("Iyun")
-            elif str(months[0][0]) == str(7):
+            elif str(months[0]) == str(7):
                 months_list.append("Iyul")
-            elif str(months[0][0]) == str(8):
+            elif str(months[0]) == str(8):
                 months_list.append("Avgust")
-            elif str(months[0][0]) == str(9):
+            elif str(months[0]) == str(9):
                 months_list.append("Sentyabr")
-            elif str(months[0][0]) == str(10):
+            elif str(months[0]) == str(10):
                 months_list.append("Oktyabr")
-            elif str(months[0][0]) == str(11):
+            elif str(months[0]) == str(11):
                 months_list.append("Noyabr")
-            elif str(months[0][0]) == str(12):
+            elif str(months[0]) == str(12):
                 months_list.append("Dekabr")
 
         months_list.append("⬅️ Orqaga")
