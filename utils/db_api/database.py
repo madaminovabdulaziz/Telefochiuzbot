@@ -123,6 +123,10 @@ class Database:
         telegram_id = str(telegram_id)
         sql = f"SELECT age FROM Users WHERE telegram_id='{telegram_id}'"
         return await self.execute(sql, fetchval=True)
+    
+    async def count_users(self):
+        sql = "SELECT COUNT(*) FROM Users"
+        return await self.execute(sql, fetchval=True)
 
     async def getUser_work(self, telegram_id):
         telegram_id = str(telegram_id)
