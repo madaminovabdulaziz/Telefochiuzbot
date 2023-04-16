@@ -447,3 +447,10 @@ async def finallyYES(message: Message, state: FSMContext):
             managers_markup.add(*managers_list)
             await message.answer("Menejerni tanlang:", reply_markup=managers_markup)
             await state.set_state("get_manager")
+            
+@dp.message_handler(text="/count", chat_id=ADMINS, state="*")
+async def showUsers(message: Message):
+    users = await db.count_users()
+    await message.answer(f"Ayni payt botdan {users}-kishi ro'yxatdan o'tgan!")
+    await message.answer("🏡 Bosh menyu", reply_markup=main_menu())
+    await Main.main_menu.set()
