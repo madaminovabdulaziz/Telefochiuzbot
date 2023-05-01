@@ -159,12 +159,12 @@ async def showAMenu(message: Message):
 @dp.message_handler(text="📊 Statistika ko'rish", state="get_action")
 async def showYear(message: Message, state: FSMContext):
     year_markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-    year_list = list()
+    year_list = set()
     years_months = await db.getMonthYear()
     for i in years_months:
-        year_list.append(str(i[1]))
+        year_list.add(str(i[1]))
 
-    year_list.append("⬅️ Orqaga")
+    year_list.add("⬅️ Orqaga")
     year_markup.add(*year_list)
 
     await message.answer("Yil tanlang: ", reply_markup=year_markup)
